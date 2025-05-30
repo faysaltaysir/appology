@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forgive Me, Tasnu 💖</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ffe4e1, #ffc0cb);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      margin-top: 30px;
+      color: #d6336c;
+      font-size: 2.2em;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeSlide 1s ease-out forwards;
+      padding: 0 10px;
+    }
+
+    #typewriter {
+      font-size: 1.1em;
+      color: #444;
+      max-width: 90%;
+      margin: 20px 0;
+      white-space: pre-wrap;
+      min-height: 140px;
+    }
+
+    img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 20px 0;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: scale(0.8);
+      animation: fadeZoom 1.2s ease-out forwards;
+      animation-delay: 1.2s;
+    }
+
+    .slider {
+      margin-top: 10px;
+      font-size: 1em;
+      color: #8b0000;
+      animation: fade 4s infinite;
+      min-height: 30px;
+      padding: 0 15px;
+    }
+
+    .heart {
+      font-size: 3em;
+      color: red;
+      animation: beat 1s infinite;
+      margin-top: 10px;
+    }
+
+    button {
+      background-color: #ff69b4;
+      border: none;
+      border-radius: 30px;
+      color: white;
+      padding: 12px 25px;
+      font-size: 1em;
+      margin: 25px 0;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #ff1493;
+    }
+
+    .final {
+      font-size: 1.4em;
+      color: #c2185b;
+      display: none;
+      margin-bottom: 20px;
+      padding: 0 15px;
+    }
+
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .heart-float {
+      position: absolute;
+      font-size: 1.8em;
+      animation: float 6s linear infinite;
+    }
+
+    @keyframes fadeSlide {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeZoom {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fade {
+      0% {opacity: 0;}
+      20% {opacity: 1;}
+      80% {opacity: 1;}
+      100% {opacity: 0;}
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100%); opacity: 1; }
+      100% { transform: translateY(-100%); opacity: 0; }
+    }
+
+    @media (min-width: 600px) {
+      h1 {
+        font-size: 3em;
+      }
+
+      #typewriter {
+        font-size: 1.3em;
+      }
+
+      img {
+        width: 250px;
+        height: 250px;
+      }
+
+      .slider {
+        font-size: 1.2em;
+      }
+
+      .final {
+        font-size: 1.8em;
+      }
+
+      button {
+        font-size: 1.2em;
+        padding: 15px 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="bgMusic" autoplay loop>
+    <source src="romantic.mp3" type="audio/mp3">
+    <!-- Optional: Add a romantic.mp3 file -->
+  </audio>
+
+  <h1>Tasnu, I'm Really Sorry ❤️</h1>
+
+  <div id="typewriter"></div>
+
+  <img src="your_photo.jpg" alt="Tasnu and Faysu">
+
+  <div class="slider" id="sliderText">You’re the reason my heart beats. 💓</div>
+
+  <div class="heart">❤️</div>
+
+  <button onclick="showFinal()">Click here if you forgive me 💌</button>
+
+  <div class="final" id="finalMsg">I love you endlessly, Tasnu. Forever yours – Faysu 💖</div>
+
+  <div class="hearts" id="hearts"></div>
+
+  <script>
+    const message = `You mean the world to me, and I'm lost without your smile.\n
+Please forgive your silly Faysu.\n
+I promise to make it up to you in every way I can.\n
+You're my sunshine, my peace, my everything.`;
+
+    let index = 0;
+    const speed = 50;
+    const output = document.getElementById("typewriter");
+
+    function typeWriter() {
+      if (index < message.length) {
+        output.innerHTML += message.charAt(index);
+        index++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+
+    window.onload = () => {
+      typeWriter();
+    };
+
+    const messages = [
+      "You’re the reason my heart beats. 💓",
+      "Every moment with you is my favorite. 🌟",
+      "I miss your smile more than words can say. 😊",
+      "Let’s make more memories together. 💞",
+      "You complete me, Tasnu. 💍"
+    ];
+
+    let i = 0;
+    setInterval(() => {
+      document.getElementById('sliderText').innerText = messages[i % messages.length];
+      i++;
+    }, 4000);
+
+    function showFinal() {
+      document.getElementById('finalMsg').style.display = 'block';
+      for (let i = 0; i < 30; i++) {
+        let heart = document.createElement('div');
+        heart.classList.add('heart-float');
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDelay = Math.random() * 2 + 's';
+        heart.innerText = '💗';
+        document.getElementById('hearts').appendChild(heart);
+      }
+    }
+  </script>
+
+</body>
+</html>
