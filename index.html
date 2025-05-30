@@ -172,10 +172,10 @@
 </head>
 <body>
 
-  <audio id="bgMusic" autoplay loop>
-    <source src="romantic.mp3" type="audio/mp3">
-    <!-- Optional: Add a romantic.mp3 file -->
-  </audio>
+  <audio id="bgMusic" loop>
+  <source src="romantic.mp3" type="audio/mp3">
+</audio>
+
 
   <h1>Tasnu, I'm Really Sorry ❤️</h1>
 
@@ -230,16 +230,23 @@ You're my sunshine, my peace, my everything.`;
     }, 4000);
 
     function showFinal() {
-      document.getElementById('finalMsg').style.display = 'block';
-      for (let i = 0; i < 30; i++) {
-        let heart = document.createElement('div');
-        heart.classList.add('heart-float');
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDelay = Math.random() * 2 + 's';
-        heart.innerText = '💗';
-        document.getElementById('hearts').appendChild(heart);
-      }
-    }
+  document.getElementById('finalMsg').style.display = 'block';
+
+  const bgMusic = document.getElementById('bgMusic');
+  bgMusic.play().catch((e) => {
+    console.warn("Audio play was blocked:", e);
+  });
+
+  for (let i = 0; i < 30; i++) {
+    let heart = document.createElement('div');
+    heart.classList.add('heart-float');
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDelay = Math.random() * 2 + 's';
+    heart.innerText = '💗';
+    document.getElementById('hearts').appendChild(heart);
+  }
+}
+
   </script>
 
 </body>
